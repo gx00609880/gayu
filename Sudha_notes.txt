@@ -1,0 +1,53 @@
+http://localhost:8080/root/insert
+
+postman -> try insert -> return true -> this is 
+
+{
+"id":1
+...
+"location":
+{
+}
+}
+----- insert----------
+
+this.http.post("http://localhost:8080/root/insert",formValue,this.httpOption)
+
+httpOption={
+  headers: new HttpHeaders({
+    'Content-Type':'application/json'
+  })
+}
+
+
+this.eventsListService.getAllEvents().subscribe((resp)=>{
+            this.eventdetails=resp
+        });
+
+
+./fjsdkf.png
+
+------
+
+dist folder -> distribution folder
+
+ng build -> development environmnet (not happen manifies the file)
+
+ng build --base-href /events -> it will be the base url http://localhost:4200/events
+
+-> Create events folder in the Appache Tomcat inside webapps
+paste the all dist content inside the events folder
+
+ng build --prod --base-href /events -> (--prod inbuilt have aot - "ahead of time") reduce the size from 10 MB to 1 MB
+
+AWS:
+S3 Bucket (to store the files)-> Create new bucket (uncheck the block option to enable it visible to everyone) 
+properties -> static website hosting -> index documnet index.html, error document error.html
+
+permission -> block should be off, bucket policy -> Grant read-only to anynomus user json code from documentation
+
+overview -> upload the documents
+
+
+//10.30.154.96
+72

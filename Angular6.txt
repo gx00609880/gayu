@@ -1,0 +1,291 @@
+###Day1###
+
+Typescript:(Developer point of view) -> Only can use for development
+Transpile lang, product of microsoft
+
+Typescript code -> tsc -> transpile into -> javascript code
+
+typescript => strongly typed feature
+
+var age=12;
+var age: number =12; => ECMA Script/Typescript
+
+-> Object Orientedness
+
+class Employee
+{
+}
+
+pure javscript: function Employee
+{
+}
+
+Modern browser not directly accept/ read typescript.
+Chrome support ECMA 6.
+
+npm install -g typescript -> to install the typescript library.
+
+typescript compiler
+tsc day1demo1.ts -> To compile the typescript file
+
+TypeInterference:
+
+var age: number =12 || var age: any=12; -> Strongly Typed
+
+tsc --init ->it will create tsconfig.json file -> inside compiler options include "watch": true
+"outDir":"./js", "strict": true
+
+node cmd -> tsc
+
+Watch / compile automatically when there is any modification in the file
+
+tsc --watch
+
+live-server
+
+string -> Adviced to use 
+//String -> wrapper
+number
+Number
+
+Union Type:
+let names: string|number="sudha";
+
+var & let difference:
+var - variable will be accessible outside scope
+let - will not accessible outside scope
+const - cannot chagne the value & will not accessible outside scope
+
+
+To view the js file console result in window
+node ./js/day1demo1.js
+
+for Example with "let n in arrary" | let n off array
+
+Display the result by passing the index value
+for(let n in frutis)
+{
+     console.log(frutis[n]);
+}
+
+display the result directly
+
+for(let n of frutis)
+{
+    console.log(n);
+}
+
+
+function getData(name:string,age?:number)
+{
+
+}
+getData("India")
+Order would be: Mandate, Optional 
+
+-----------
+
+Day2
+
+Arrow functioning() similar to  Lambda 
+//Anonymous function
+
+instantiate the function by using new operator
+
+Make false to noImplicitAny, noImplicitThis -> it will raise error, while using any inscope variable ex: "this.count"
+sourceMap: true -> Stop the watch & start the watch again, it will generate the filename.js.map file
+it wil enable the ts file in the browser for debugging (our development work is in ts file only)
+
+addEventListener => Is an anonymous function for the container
+Ex: 
+addEventListener
+
+
+function generateRandNum(el)
+{
+    this.count=100;
+    el.innerHTML=this.count;
+    el.addEventListener('click',function(){
+	this.count+=1;
+    el.innerHTML=this.count;
+    })
+
+}
+
+P.S: above function get NAN in the click event due to this.count variable is not accessible, to make the variable get/ access the function we need to use arrow function
+
+Anonymous function replacement by arrow function, so that your local scope variable can be accessible
+
+function generateRandNum(el)
+{
+    this.count=100;
+    el.innerHTML=this.count;
+    el.addEventListener('click',()=>{
+    this.count+=1;
+    el.innerHTML=this.count;
+    })
+}
+
+// function is replaced by ()=>  is called arrow function.
+
+if attach the script in body, after the control binded to UI, script will start run.
+If attach the script in head tag, then script first execute then control will load/bind
+
+Interface:
+
+only one constructor can create, can have no or one or N parameters. but only one constructor
+
+access modifiers: private, public, protected
+
+only one class can be extended, but should use super keyword to override the parent function
+
+inside a class you cannot use function keyword for function
+
+class parent
+{
+demo():number
+{
+return 10;
+}
+}
+
+abstract class you cannot create instance, interface we can create instance
+var p= new Parent(); -> can't work in abstract
+
+Export & Import:
+
+To access the class from one file to other, we have use export & import
+Export: directly in class definition use keyword "export"
+import: keyword "import" { className } from 'filename' -> extension ts is not required in filename
+import {TodoApp} from './day2demo2';
+
+
+####Day3:
+
+Access modifiers along with getter & setters 
+- by using get & set in getter & setter function, we can access the method as like variable.
+
+// string templating - string interpolation (angular)
+
+
+var status: string = `Your task ${ Todo.Completed? 'IS': 'IS NOT '}`+'Completed';
+console.log(status);
+
+{{}} -> string interpolation in angular 
+${} -> string templating in typescript along with diactic character.
+
+
+https://github.com/sabarirepo/angularjuly2019open
+
+ng new projectname -> To create new project
+npm install pluginName --save -> 
+
+npm install boostrap@3.4.1 --save
+
+e2e -> End to End testing , Karma tool used for testing
+node_modules -> local repository for your project
+src -> source code will go here (.ts files)
+angular.json
+package.json -> both are configuration files. 
+package.json -> inside scripts tag, start "ng serve", test "ng test", lint "ng lint" (standarizing your code like spacing, name conversion etc)
+dependencies : @angular/core (all your libraries are mentioned over here)
+angular.json  -> projects tag, sourceRoot as "src"
+if you changed src folder to sudha then sourceRoot also need to change as sudha
+index: is the only page load into browser, main.ts is the first file where angualr will start.
+assets: all static files referes into this filder
+styles: global styles - if you refer jquery/boostrap css you have refere here
+"styles"::[
+"src/style.css",
+"bootstrap.css"
+]
+scripts: all the scripts files refered to script tag
+"scripts":[jquery, bootstrap.js]
+
+src -> environments: environment.prod.ts or environment.ts
+maint.ts -> PlatformBrowserDynamic -> angular application can launched to anywhere server, browser, node server. Specifying  PlatformBroserDynamic is launching to browser.
+platformBrowserDynamic().bootstrapModule(AppModule) -> boostraping to appmodule/ start the Appmodule
+polyfills -> browser captability
+
+unit test code -> app.component.spec.ts file (spec.ts -> can write unit testing code) 
+
+
+AppModule.ts -> 
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+@NgModule => @ symbol -> Decorators
+
+---------- 
+###Day3 ###
+
+styles:
+
+"./node_modules/toastr/build/toastr.min.css",
+"./node_modules/ngf-bootstrap/dist/bootstrap.min.css"
+
+1. Create a New component -> (ts+code+html) -> 2. Register the component (inside the module)
+3. Apply the selector on to your root component
+
+pipes, 
+
+@Input() -> Parent to Child
+@Output() -> Child to parent, this is little complex, so comeup with Template
+
+-------------
+### Day 3 ###
+Structural directive: changing the structure of the directive
+Ex: ngFor
+
+safe navigation operator:
+cannot read property of 'name' undefined
+
+event1?.name => if the event1 is  undefined, then it wont look for name property
+
+{{event1?.location.address}} => {{event1?.location?.address}}
+
+ngSwitch is model case, dont use  * infront
+*ngSwitchCase is  structural case.
+
+
+use the below in serive class if you dont want to register the service name in Module.ts file
+@Injectable(
+    {
+        providedIn:'root'
+    }
+)
+
+--------------------
+### Day4 #####
+
+Router -> Navigating from one component to another Component
+
+let id= +this.route.params['id'];
+
++ notation to convert them to number
+
+=> To Avoid refresh on the page, we have to use RouterLink
+
+----------
+### Day5 ####
+
+ngNativeValidate -> Validation in Html5
+
+novalidate -> This is html5 attribute, it wont validate the input required property check.
+
+#frm="ngForm" -> Template variable, frm is a variable of type ngForm, this frm will be used in over the form
+
+------------
+### Day 6 ####
+Pipes
+
+Duration: 1,2,3 : Half hour, one hour, one day
